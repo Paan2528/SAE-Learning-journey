@@ -16,9 +16,14 @@ std::string input()
 
 void Initialize()
 {
-    print("Please add you name:");
+    print("__________________________________________");
+    print("    Please add you name:                  ");
     std::string nameUser = input();
+    print("                                          ");
+    print("__________________________________________");
+    print("                                          ");
     print("Wellcome " + nameUser + " to Home controls");
+    print("__________________________________________");
 }
 // run loop
 
@@ -26,14 +31,20 @@ void Run()
 {
     while (true)
     {
-        print("Select electrical equipment");
-        print("---Lamper---|---Fan---");
-        print("Pleases select the Equiment");
-        print("1 for Lamper or 2 for Fan");
+        print("                                             ");
+        print("Pleasse Select electrical equipment.");
+        print("                                             ");
+        print("-------Lamper---------|---------Fan----------");
+        print("                                             ");
+        print("Press number 1 for Lamper or number 2 for Fan.");
+
         std::string inputEquiment = input();
+
+        // check input if that user press number 1 or 2 or not.
         while (inputEquiment != "1" && inputEquiment != "2")
         {
-            print("Pleases select number 1 or 2");
+
+            print("Pleases select number 1 or 2 for Equiment");
             inputEquiment = input();
         }
 
@@ -42,36 +53,50 @@ void Run()
         if (inputEquiment == "1")
         {
             equimentName = "Lamper";
-            print("Hier is Lamper");
+            print("Hier is Lamper!");
         }
         else if (inputEquiment == "2")
         {
             equimentName = "Fan";
-            print("Hier is Fan");
+            print("Hier is Fan!");
         }
 
-        print("-------ON(1)/OFF(0)---------");
+        print("---------------------------------------");
+        print("------ ON(1) ----/----- OFF(0) --------");
+        print("and press X for check status of programm.");
         std::string command = input();
         while (command != "1" && command != "0")
         {
-            print("Pleases select number 1 or 0");
+            print("Pleases press number 1(ON) or 0(OFF)");
             command = input();
         }
 
         if (command == "1")
         {
-            print(equimentName + "ON");
+            print("-----Now " + equimentName + " is ON!----");
         }
-        else if (command == "2")
+        else if (command == "0")
         {
-            print(equimentName + "OFF");
+            print("-----Now " + equimentName + " is OFF!--");
+        }
+        else if (command == "X")
+        {
+            print("Equiment : ");
+            print("-----Now " + equimentName + " is ON!----");
+            print("-----Now " + equimentName + " is ON!----");
+            break;
         }
     }
 }
 
 // close the programm
+// status of equiement
+
+// std::string statusEquiment = equimentName;
+
 void Finalize()
 {
+    print("Programm close.");
 }
 
 int main()
