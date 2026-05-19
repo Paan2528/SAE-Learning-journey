@@ -29,6 +29,7 @@ void Initialize()
 
 void Run()
 {
+
     while (true)
     {
         print("                                             ");
@@ -63,9 +64,9 @@ void Run()
 
         print("---------------------------------------");
         print("------ ON(1) ----/----- OFF(0) --------");
-        print("and press X for check status of programm.");
+        print("and press X for close the programm.");
         std::string command = input();
-        while (command != "1" && command != "0")
+        while (command != "1" && command != "0" && command != "X")
         {
             print("Pleases press number 1(ON) or 0(OFF)");
             command = input();
@@ -81,12 +82,10 @@ void Run()
         }
         else if (command == "X")
         {
-            print("Equiment : ");
-            print("-----Now " + equimentName + " is ON!----");
-            print("-----Now " + equimentName + " is ON!----");
             break;
         }
     }
+    return;
 }
 
 // close the programm
