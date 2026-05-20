@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 // 2 Bool + Logic if statment
 // Programm Light and Fan control (On/OFF)
 
@@ -22,71 +23,70 @@ void Initialize()
     print("                                          ");
     print("__________________________________________");
     print("                                          ");
-    print("Wellcome " + nameUser + " to Home controls");
+    print("Welcome " + nameUser + " to Home controls");
     print("__________________________________________");
 }
 // run loop
 
 void Run()
 {
+
     while (true)
     {
         print("                                             ");
         print("Pleasse Select electrical equipment.");
         print("                                             ");
-        print("-------Lamper---------|---------Fan----------");
+        print("-------Lamp-----------|---------Fan----------");
         print("                                             ");
         print("Press number 1 for Lamper or number 2 for Fan.");
 
-        std::string inputEquiment = input();
+        std::string inputEquipment = input();
 
         // check input if that user press number 1 or 2 or not.
-        while (inputEquiment != "1" && inputEquiment != "2")
+        while (inputEquipment != "1" && inputEquipment != "2")
         {
 
-            print("Pleases select number 1 or 2 for Equiment");
-            inputEquiment = input();
+            print("Pleasse select number 1 or 2 for Equipment");
+            inputEquipment = input();
         }
 
-        std::string equimentName;
+        std::string equipmentName;
 
-        if (inputEquiment == "1")
+        if (inputEquipment == "1")
         {
-            equimentName = "Lamper";
-            print("Hier is Lamper!");
+            equipmentName = "Lamp";
+            print("Hier is Lamp!");
         }
-        else if (inputEquiment == "2")
+        else if (inputEquipment == "2")
         {
-            equimentName = "Fan";
+            equipmentName = "Fan";
             print("Hier is Fan!");
         }
 
         print("---------------------------------------");
         print("------ ON(1) ----/----- OFF(0) --------");
-        print("and press X for check status of programm.");
+        print("and press X for close the programm.");
         std::string command = input();
-        while (command != "1" && command != "0")
+        while (command != "1" && command != "0" && command != "X")
         {
-            print("Pleases press number 1(ON) or 0(OFF)");
+            print("Pleasse press number 1(ON) or 0(OFF)");
             command = input();
         }
 
         if (command == "1")
         {
-            print("-----Now " + equimentName + " is ON!----");
+            print("-----Now " + equipmentName + " is ON!----");
         }
         else if (command == "0")
         {
-            print("-----Now " + equimentName + " is OFF!--");
+            print("-----Now " + equipmentName + " is OFF!--");
         }
         else if (command == "X")
         {
-            print("Equiment : ");
-            print("-----Now " + equimentName + " is ON!----");
-            print("-----Now " + equimentName + " is ON!----");
             break;
         }
     }
+    return;
 }
 
 // close the programm
@@ -96,7 +96,7 @@ void Run()
 
 void Finalize()
 {
-    print("Programm close.");
+    print("Programm close.......");
 }
 
 int main()
