@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-const int ROWS = 10;
+const int ROWS = 8;
 const int COLS = 30;
 
 char framTUI[ROWS][COLS];
@@ -60,13 +60,32 @@ void updateTUI(int score, std::string question, std::string result)
 {
     cleanScreen();
     framScreen();
-    printFram();
-
-    textinTUI(1, 8, "Hello GAME!");
+    textinTUI(1, 2, "Hello GAME!");
+    textinTUI(3, 2, "Score: " + std::to_string(score));
+    textinTUI(4, 2, "Question: " + question);
+    textinTUI(5, 2, "Result: " + result);
 }
 
 int main()
 {
     int score = 0;
-    updateTUI(score, "2+3? ?", "weiting....");
+    int answer;
+
+    updateTUI(score, "2+3 = ?", "weiting....");
+    printFram();
+
+    std::cout << "Answer: ";
+    std::cin >> answer;
+
+    if (answer == 5)
+    {
+        score++;
+        updateTUI(score, "2+3 = ?", "Correct!");
+    }
+    else
+    {
+        updateTUI(score, "2+3 = ?", "Wrong!");
+    }
+    printFram();
+    return 0;
 }
