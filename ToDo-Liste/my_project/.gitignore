@@ -1,0 +1,4 @@
+traget/
+*.db
+.sqlite
+.sqlite3
