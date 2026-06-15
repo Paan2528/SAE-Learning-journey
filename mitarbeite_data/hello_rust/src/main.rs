@@ -6,25 +6,28 @@ struct DataMitarbeit {
     rolle: String,
 }
 // build data
-
-let dataMitarbeit = HashMap::from([
+fn main(){
+    let data_Mitarbeit = HashMap::from([
     (
         DataMitarbeit{
             name: "Janjira".to_string(),
             rolle: "marketing".to_string(),
         },
         30,
-    )
-])
+    ),
+]);
+
+
 
 //check
-let check_data = dataMitarbeit{
+let check_data = DataMitarbeit{
     name: "Janjira".to_string(),
     rolle: "marketing".to_string(),
-    if DataMitarbeit.contains_key(&check_data){
-        println!("{}", DataMitarbeit.get(&check_data));
+}; 
+    if data_Mitarbeit.contains_key(&check_data){
+        println!("{:?}", data_Mitarbeit.get(&check_data));
     }else {
         println!("Not Found")
     }
-};
-println!("{}", DataMitarbeit.contains_key(&check_data));
+println!("{:?}", data_Mitarbeit.contains_key(&check_data));
+}
