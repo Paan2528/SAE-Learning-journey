@@ -19,12 +19,16 @@ fn todo_List() -> io::Result<()>{
         //-------- Vec--------------------// 
         if trimmed == "exit"{
             break;
-        }else if !trimmed.is_empty(){
-            todo_collection.push_back(trimmed.to_string());
+    
         }else if trimmed == "Done" {
             todo_collection.pop_front();
+        }else if !trimmed.is_empty(){
+            todo_collection.push_back(trimmed.to_string());
         };
-        println!("- {:?}", todo_collection);
+        for (index,items) in todo_collection.iter().enumerate() {
+            println!("{}. {}", index + 1, items);
+        }
+            
     
 
     }
