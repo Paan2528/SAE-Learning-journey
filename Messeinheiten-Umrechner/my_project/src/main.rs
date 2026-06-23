@@ -1,7 +1,22 @@
+use rusqlite::{Connection, Result};
 use std::io;
 
-fn main() {
+fn main() -> Result<()> {
     loop {
+        //+++++++++++++ CSV file ++++++++++++++++++
+        let conn = Connection::open("app.db")?;
+
+        conn.execute(
+            "CREATE TABLE IF NOT EXISTS users(
+            id INTEGER PRIMARY KEY,
+            number REAL NOT NULL,
+            choice TEXT NOT NULL,
+            result REAL NOT NULL
+            )",
+            [],
+        )?;
+        //++++++++++++++++++++++++++++++++++++++++
+
         println!("Hello what do you want to do?");
         println!("1: millimeter -> Zentimeter");
         println!("2: Zentimeter -> Dezimeter");
@@ -13,7 +28,7 @@ fn main() {
         let choice = choice.trim();
 
         if choice == "--back" {
-            break;
+            break Ok(());
         }
 
         println!("Enter number:");
@@ -27,10 +42,18 @@ fn main() {
             "1" => number * 0.5,
             "2" => number * 0.5,
             "3" => number * 0.5,
-            "4" => break,
+            "4" => break Ok(()),
 
             _ => 0.0,
         };
         println!("{}", result);
+
+        //++++++++++++++++++++++++
+        conn.execute(
+            "INSERT INTO users (number, choice, result) VALUES (?1, ?2, ?3)",
+            (&number, &choice, &result),
+        )?;
+
+        println!("Saved to database!");
     }
 }
